@@ -1,10 +1,46 @@
 
-    <ul>
-        <%@users.each do |user|%>
-            <li><%= user.name %> </li>
-            <%= link_to 'Edit', edit_user_path(user) %>
-            <%= button_to "delete", "/users/#{user.id}", :method => :delete, confirm: "Do you wanna delete?" %>
-            <%end%>     
-           
-    </ul>
-   
+    <style>
+    body {
+        background:#08a0e9;
+    }
+    .container{
+        margin-top:30px;
+    }
+    .card{
+        border-radius:30px;
+        width:150px;
+       
+    }
+    .card-img-top{
+        width:200px;
+        margin:auto;  
+        margin-top:20px;
+        } 
+       a{
+           margin-bottom:5px;
+       } 
+      
+     .btn btn-primary{
+         margin-bottom:5px;
+     }
+    </style>
+    <%= render "users/nav"%>
+    <div class="container">
+        <div class="card-deck col-12">
+            <%@users.each do |user|%>
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="https://yt3.ggpht.com/a-/AN66SAwGMPYKKYhYGt6V3NLMBAU3a0w-zfsmttDoYQ=s900-mo-c-c0xffffffff-rj-k-no" alt="Card image cap">
+                        <div class="card-body">
+                            <h2 class="card-title"><h5>User</h5>
+                            <p class="card-text"> <h5>Name:<%=user.name%></h5></p>
+                                <p class="card-text"> <h5>Email:<%=user.email%></h5></p>
+                                    <%= link_to 'Edit User ', edit_user_path(user), class: "btn btn-primary" %>
+                                    <%= link_to 'Check User ', user_path(user), class: "btn btn-primary" %>
+                                    <%= button_to "delete", "/users/#{user.id}", :method => :delete,class:" btn btn-danger"%>        
+                        </div>
+                </div>
+            <% end %>            
+        </div>
+    </div> 
+  
+  

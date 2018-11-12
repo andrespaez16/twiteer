@@ -1,0 +1,28 @@
+<style>
+
+body{
+     background:#08a0e9;
+     color:white;
+}
+.container{
+width:400px;
+border:solid 8px white;
+border-radius:10px;
+margin-top:100px;
+padding:40px;
+}
+</style>
+
+
+
+<div class="container">
+<div class:"jumbotron">
+<h1>Create a new User:<i class="fab fa-twitter-square"></i></h1>
+</div>
+<%= bootstrap_form_for(@user) do |f| %>
+    <%= f.text_field :name ,placeholder:"User name"%>
+    <%= f.email_field :email, placeholder:"email"%>
+   
+    <%= f.submit "Log In",class:"btn btn-primary btn-lg "%>
+  <% end %>
+ </div> 

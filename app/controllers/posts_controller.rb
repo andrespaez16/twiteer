@@ -1,18 +1,41 @@
 class PostsController < ApplicationController
+  
 
-    def index
-        @post=Post.all
-    end 
+        def index
+            @posts=Post.all
+        end 
+        
+        def new
+            @user = User.first
+            @post = Post.new
+        end  
+        
+        def create
+            @user = User.first #pendiente saber como pasar esta variable trayendola del usuario del post
+            @post = @user.posts.create(post_params)
+            redirect_to posts_path
+        end
     
-    def new
-        @post=User.new
-    end  
+        def edit
+            @post = Post.find(params[:id])
+        end
     
-    def create
-        @post=Post.create(post_params)
-    end   
-    private
-    def posts_params
-        params.require(:post).permit(:title,:description,)   
-    end  
+        def update
+            @user = User.first #pendiente saber como pasar esta variable trayendola del usuario del post
+            @post = Post.find(params[:id])
+            @post.update(post_params)
+            redirect_to posts_path
+        end
+    
+        def destroy
+            @post = Post.find(params[:id])
+            @post.destroy
+            redirect_to posts_path
+        end
+      
+        private
+        def post_params
+            params.require(:post).permit(:title,:description)   
+        end  
+    
 end
