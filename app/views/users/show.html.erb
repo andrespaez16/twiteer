@@ -26,14 +26,19 @@ hr{
         <div class="jumbotron">
         <%= image_tag "https://yt3.ggpht.com/a-/AN66SAwGMPYKKYhYGt6V3NLMBAU3a0w-zfsmttDoYQ=s900-mo-c-c0xffffffff-rj-k-no",width:"100px" ,class:"imagen"%>
         
-        <h1><%=@user.name%> <i class="fas fa-user-check"></i></h1>
+        <div class="d-flex justify-content-between align-items-center p-2"><h1><%=@user.name%> <i class="fas fa-user-check"></i></h1>
+        <%= link_to 'Write a New Post', new_post_path(user: @user.id),class:"btn btn-secondary p-1" %>
+</div>
         <hr>
+
         <ul>
         <%@posts.each do |post|%>
-            <li><h2><%= post.title %></h2>
-                <ul>
-                    <li><%= post.description %></li>
-                </ul>   
+            <li class="pb-3"><h2><%= post.title %></h2>
+                <ul class="list-group">
+                    <li class="list-group-item text-dark h5"><%= post.description %></li>
+                    <div class="d-flex justify-content-end"><%= link_to 'Edit this post', edit_post_path(post, user: @user.id), class:"btn btn-secondary"%>
+                    <%= link_to 'Delete this post', "/posts/#{post.id}", :method => :delete, class:"btn btn-danger"%>
+                    </ul>   
             </li>
             <%end%>  
         </ul>
