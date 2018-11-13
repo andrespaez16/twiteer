@@ -31,12 +31,14 @@
                 <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="https://yt3.ggpht.com/a-/AN66SAwGMPYKKYhYGt6V3NLMBAU3a0w-zfsmttDoYQ=s900-mo-c-c0xffffffff-rj-k-no" alt="Card image cap">
                         <div class="card-body">
-                            <h2 class="card-title"><h5>User</h5>
-                            <p class="card-text"> <h5>Name:<%=user.name%></h5></p>
-                                <p class="card-text"> <h5>Email:<%=user.email%></h5></p>
-                                    <%= link_to 'Edit User ', edit_user_path(user), class: "btn btn-primary" %>
-                                    <%= link_to 'Check User ', user_path(user), class: "btn btn-primary" %>
-                                    <%= button_to "delete", "/users/#{user.id}", :method => :delete,class:" btn btn-danger"%>        
+                            <h2 class="card-title"><h4>User:</h4>
+                            <p class="card-text"> <h5>Name: <%=user.name%></h5></p>
+                                <p class="card-text"> <h5>Email: <%=user.email%></h5></p>
+                                <div class="d-flex justify-content-end space-between">
+                                    <%= link_to 'Edit User ', edit_user_path(user), class: "btn btn-primary m-2" %>
+                                    <%= link_to 'Check User ', user_path(user), class: "btn btn-primary m-2" %>
+                                    <%= button_to "delete", "/users/#{user.id}", :method => :delete,class:" btn btn-danger m-2"%>        
+                                    </div>
                         </div>
                 </div>
             <% end %>            

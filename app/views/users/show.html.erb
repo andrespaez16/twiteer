@@ -31,13 +31,13 @@ hr{
         <ul>
         <%@posts.each do |post|%>
             <li><h2><%= post.title %></h2>
-                <ul>
-                    <li><%= post.description %></li>
+                <ul class="list-group">
+                    <li class="list-group-item text-dark h5"><%= post.description %></li>
                 </ul>   
             </li>
             <%end%>  
         </ul>
-        
+        <%= link_to 'Write a New Post', new_post_path(user: @user.id),class:"btn btn-primary btn-block" %>
         </div>  
  </div>        
         

@@ -1,0 +1,32 @@
+<style>
+
+body{
+     background:#08a0e9;
+     color:white;
+}
+.container{
+border:solid 8px white;
+border-radius:10px;
+margin-top:100px;
+padding:40px;
+}
+</style>
+ <div class="row"><div class="col sm-6">
+<div class="container">
+<div class:"jumbotron">
+<h1>Nuevo Post <i class="fab fa-twitter-square"></i></h1>
+</div>
+
+<h3>Usuario <%=@user_post.name%> </h3>
+<%= bootstrap_form_for @post do |f| %>
+
+<%= f.text_field :title, placeholder: "Titulo" %>
+<%= f.text_area :description, placeholder: "Descripción"%>
+<!--Campo oculto que se enviara en el formulario con el post-->
+<%= f.hidden_field :user_id, value:@user_post.id %>
+<%= f.submit "Crear",class:"btn btn-primary"%>
+<%= link_to 'Volver', user_path(@user_post), class: "btn btn-primary" %>
+<% end %>
+
+</div></div>
+

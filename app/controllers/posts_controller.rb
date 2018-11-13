@@ -6,14 +6,14 @@ class PostsController < ApplicationController
         end 
         
         def new
-            @user = User.first
+            @user_post = User.find(params[:user]) # desde el show del usuario se recibe la variable user enviada por la url
             @post = Post.new
         end  
         
         def create
-            @user = User.first #pendiente saber como pasar esta variable trayendola del usuario del post
+            @user = User.find(params[:post][:user_id]) #se recibe del formulario el user_id y se busca al usuario
             @post = @user.posts.create(post_params)
-            redirect_to posts_path
+            redirect_to user_path(@user)
         end
     
         def edit
